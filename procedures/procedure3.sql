@@ -1,0 +1,13 @@
+--3
+CREATE PROCEDURE Delete_Verbale_From_Id
+	@ID INT
+
+AS
+BEGIN
+	SET NOCOUNT ON
+
+	DELETE FROM Verbale
+	WHERE IdVerbale = @ID
+
+END
+GO

@@ -1,0 +1,43 @@
+--1
+CREATE PROCEDURE Search_For_Year
+	@Year CHAR(4)
+
+AS
+BEGIN
+	SET NOCOUNT ON
+
+	SELECT *
+	FROM Verbale
+	WHERE DataViolazione BETWEEN @Year + '0101' AND @Year + '1231'
+
+END
+GO
+
+--2
+CREATE PROCEDURE Totale_Punti_Decurtati_Per_Data
+	@Date VARCHAR(30)
+
+AS
+BEGIN
+	SET NOCOUNT ON
+
+	SELECT sum(DecurtamentoPunti) AS Totale_Punti_Decurtati
+	FROM Verbale
+	WHERE DataViolazione = @Date
+
+END
+GO
+
+--3
+CREATE PROCEDURE Delete_Verbale_From_Id
+	@ID INT
+
+AS
+BEGIN
+	SET NOCOUNT ON
+
+	DELETE FROM Verbale
+	WHERE IdVerbale = @ID
+
+END
+GO
